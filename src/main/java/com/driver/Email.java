@@ -1,5 +1,8 @@
 package com.driver;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Email {
 
     private String emailId;
@@ -25,5 +28,17 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+    	
+    	String regex="^(?=.*[a-z])(?=."+"*[A-Z])(?=.*\\d)"+"(?=.*[-+_!@#$%^&*.,?]).+$";
+    	Pattern p=Pattern.compile(regex);
+    	Matcher m=p.matcher(newPassword);
+    	if(oldPassword== newPassword)
+    	{
+    		if((newPassword.length()>= 8 ) &&(m.matches()==true))
+    		{
+    			System.out.println("password change successfully");
+    		}
+    			
+    	}
     }
 }
