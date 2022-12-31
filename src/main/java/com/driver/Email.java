@@ -29,16 +29,48 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
     	
-    	String regex="^(?=.*[a-z])(?=."+"*[A-Z])(?=.*\\d)"+"(?=.*[-+_!@#$%^&*.,?]).+$";
-    	Pattern p=Pattern.compile(regex);
-    	Matcher m=p.matcher(newPassword);
-    	if(oldPassword== newPassword)
+    	if(oldPassword.equals(password))
     	{
-    		if((newPassword.length()>= 8 ) &&(m.matches()==true))
+    		if(isValid(newPassword))
     		{
-    			System.out.println("password change successfully");
+    			System.out.println("Password changed successfully!");
+    			this.password=password;
+    		}
+    		else {
+    			System.out.println("The new password is not valid!");
     		}
     			
     	}
+    	else
+    	{
+    		System.out.println("The given password does not match current password!");
+    	}
     }
+
+	private boolean isValid(String password) {
+		// TODO Auto-generated method stub
+		boolean CapitalLetter= false;
+		boolean SmallLetter =false;
+		boolean digit=false;
+		boolean specialchar=false;
+		
+		if(password.length()<8)
+			return false;
+		for(int i=0;i<password.length();i++)
+		{
+			char ch=password.charAt(i);
+			if((ch>='A') && (ch<='Z'))
+				CapitalLetter=true;
+			else if((ch>='a') && (ch<='z'))
+				 SmallLetter=true;
+			else if ((ch>='0')&& (ch<='9'))
+				digit=true;
+			else 
+				specialchar=true;
+		}
+		
+		if(CapitalLetter&& SmallLetter&& digit && specialchar)
+			return true;
+		return false;
+	}
 }
