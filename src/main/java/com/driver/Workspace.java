@@ -9,11 +9,12 @@ import java.util.Iterator;
 
 public class Workspace extends Gmail{
 
-    private ArrayList<Meeting> calendar=new ArrayList<>(); // Stores all the meetings
+    private ArrayList<Meeting> calendar=null; // Stores all the meetings
 
     public Workspace(String emailId) {
         // The inboxCapacity is equal to the maximum value an integer can store.
           super(emailId,Integer.MAX_VALUE);
+        calender==new ArrayList<>();
     }
 
     public void addMeeting(Meeting meeting){
