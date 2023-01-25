@@ -56,7 +56,7 @@ public class Gmail extends Email {
         	Inbox.remove(m);
         	Trash.add(m);
         }
-       
+       System.out.println(message);
     }
 
     public String findLatestMessage(){
